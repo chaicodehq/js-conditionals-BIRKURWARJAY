@@ -57,7 +57,7 @@ export function calculateParkingFee(hours, vehicleType) {
   } else {
     let evn = 'extra'.concat(vehicleType);
     mfv = 'max'.concat(vehicleType);
-    parkingFee = fee[vehicleType] + ((Math.round(hours) - 1) * fee[evn])
+    parkingFee = fee[vehicleType] + ((Math.ceil(hours) - 1) * fee[evn])
   }
 
   if (parkingFee > fee[mfv]) parkingFee = fee[mfv];
