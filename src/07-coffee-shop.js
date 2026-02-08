@@ -31,5 +31,30 @@
  * @returns {number} Total price or -1 for invalid input
  */
 export function calculateCoffeePrice(size, type, extras = {}) {
-  // Your code here
+  let sizes = {
+    'small': 3,
+    'medium': 4,
+    'large': 5
+  };
+
+  let add_ons = {
+    'regular': 0,
+    'latte': 1,
+    'cappuccino': 1.5,
+    'mocha': 2
+  };
+
+  let totalPrice;
+
+  if (!sizes.hasOwnProperty(size.toLowerCase()) || !add_ons.hasOwnProperty(type.toLowerCase())) {
+    return -1;
+  } else if (extras.extraShot === true) {
+    totalPrice = sizes[size] + add_ons[type] + 0.75;
+  } else if (extras.whippedCream === true) {
+    totalPrice = sizes[size] + add_ons[type] + 0.5;
+  } else {
+    totalPrice = sizes[size] + add_ons[type];
+  }
+  return totalPrice.toFixed(2);
 }
+// Takes the most time compared to all test as i didnt write else code in first go;;;
