@@ -48,13 +48,12 @@ export function calculateCoffeePrice(size, type, extras = {}) {
 
   if (!sizes.hasOwnProperty(size.toLowerCase()) || !add_ons.hasOwnProperty(type.toLowerCase())) {
     return -1;
-  } else if (extras.extraShot === true) {
-    totalPrice = sizes[size] + add_ons[type] + 0.75;
-  } else if (extras.whippedCream === true) {
-    totalPrice = sizes[size] + add_ons[type] + 0.5;
-  } else {
+  }else {
     totalPrice = sizes[size] + add_ons[type];
   }
-  return totalPrice.toFixed(2);
+
+  if (extras.extraShot) totalPrice += 0.75;
+  if (extras.whippedCream) totalPrice += 0.5;
+  return Number(totalPrice.toFixed(2));
 }
 // Takes the most time compared to all test as i didnt write else code in first go;;;
