@@ -43,7 +43,7 @@ export function calculateTip(billAmount, serviceRating) {
   };
 
   
-  if (billAmount <= 0 || (serviceRating <= 0 || serviceRating > 5)) {
+  if (billAmount <= 0 || (serviceRating <= 0 || serviceRating > 5) || serviceRating % 1 !== 0) {
     return null;
   } else {
     tipPercentage = tp[serviceRating];
